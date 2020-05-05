@@ -1,15 +1,15 @@
 const Order = require("../orderSchema");
-const getToken = require("../../../helpers/getToken");
+//const getToken = require("../../../helpers/getToken");
 
 const getOrderById = async (request, response) => {
   try {
-    const token = getToken(request);
-    if (!token) {
-      return response.status(403).send({
-        status: "failed",
-        message: "No token provided"
-      });
-    }
+    // const token = getToken(request);
+    // if (!token) {
+    //   return response.status(403).send({
+    //     status: "failed",
+    //     message: "No token provided"
+    //   });
+    // }
     const id = request.params.id;
     const findOrder = await Order.findById(id);
     response.status(200).json({

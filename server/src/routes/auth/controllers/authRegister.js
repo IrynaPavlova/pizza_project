@@ -1,5 +1,6 @@
 const User = require("../../users/userSchema");
 const bcrypt = require("bcrypt");
+const generateToken = require("../../../helpers/generateToken");
 
 const authRegister = async (request, response) => {
   try {
@@ -19,10 +20,14 @@ const authRegister = async (request, response) => {
 
     const newUser = new User(userData);
     const userToSave = await newUser.save();
+    const id = userToSave._id;
+    const payload = { id };
+    const token = generateToken(payload);
 
     response.status(201).json({
       status: "success",
-      user: userToSave
+      user: userToSave,
+      token: token
     });
   } catch (error) {
     response.status(400).json({

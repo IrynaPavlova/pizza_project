@@ -1,6 +1,5 @@
 const Image = require("../imageSchema");
 const Product = require("../../products/productSchema");
-//const User = require("../../users/userSchema");
 const path = require("path");
 const { port } = require("../../../../config");
 const getToken = require("../../../helpers/getToken");
