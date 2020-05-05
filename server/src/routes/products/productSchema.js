@@ -40,9 +40,12 @@ const productSchema = new Schema(
       required: true
     },
     images: {
-      type: Array,
-      required: true
+      type: Array
     },
+    closeUpImages: {
+      type: Array
+    },
+
     ingredients: [{ type: mongoose.Types.ObjectId, ref: "Ingredient" }]
   },
   {
