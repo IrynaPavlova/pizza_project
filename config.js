@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 
 module.exports = {
   port: PORT,
-  mongodbUrl: process.env.MONGODB_URL,
+  mongodbUrl: process.env.MONGODB_URI,
   secret: process.env.SECRET,
   oAuthGoogle: {
     clientID: process.env.GOOGLE_CLIENTID,
