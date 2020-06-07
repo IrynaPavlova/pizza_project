@@ -1,4 +1,4 @@
-const morgan = require("morgan");
+//const morgan = require("morgan");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -29,7 +29,7 @@ const startServer = port => {
     .use(express.json())
     .use(express.static("static"))
     .use(corsMiddleware())
-    .use(morgan("combined"))
+    //.use(morgan("combined"))
     //.use(verifyToken)
     .use("/auth", authRoute)
     .use("/products", productRoute)
