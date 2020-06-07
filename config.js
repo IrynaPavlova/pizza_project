@@ -1,4 +1,7 @@
 require("dotenv").config();
+//console.log("process.env", process.env);
+
+//set NODE_ENV=dev &&
 
 const PORT = process.env.PORT || 3001;
 
