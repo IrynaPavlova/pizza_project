@@ -1,5 +1,5 @@
 require("dotenv").config();
-//console.log("process.env", process.env);
+console.log("process.env.PORT", process.env.PORT);
 
 //set NODE_ENV=dev &&
 
@@ -12,11 +12,15 @@ module.exports = {
   oAuthGoogle: {
     clientID: process.env.GOOGLE_CLIENTID,
     clientSecret: process.env.GOOGLE_CLIENTSECRET,
-    callbackURL: `http://localhost:${PORT}/auth/google/callback`
+    callbackURL:
+      //`http://localhost:${PORT}/auth/google/callback`
+      "https://evening-caverns-34846.herokuapp.com/auth/google/callback"
   },
   oAuthFacebook: {
     clientID: process.env.FACEBOOK_CLIENTID,
     clientSecret: process.env.FACEBOOK_CLIENTSECRET,
-    callbackURL: `http://localhost:${PORT}/auth/facebook/callback`
+    callbackURL:
+      //`http://localhost:${PORT}/auth/facebook/callback`
+      "https://evening-caverns-34846.herokuapp.com/auth/facebook/callback"
   }
 };
