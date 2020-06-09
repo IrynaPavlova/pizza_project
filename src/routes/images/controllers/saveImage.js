@@ -18,7 +18,7 @@ const saveImage = async (request, response) => {
     const imagePath = body.file.path;
     const imageStats = path.parse(imagePath);
     const imageUrl =
-      `https:evening-caverns-34846.herokuapp.com` + imageStats.base;
+      `https:evening-caverns-34846.herokuapp.com/` + imageStats.base;
     //`http://localhost:${port}/` + imageStats.base;
     imageData = {
       productId: productId,
