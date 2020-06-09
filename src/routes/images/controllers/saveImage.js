@@ -29,12 +29,12 @@ const saveImage = async (request, response) => {
     const ImageToSave = await newImage.save();
 
     const product = await Product.findById(productId);
-    const productImages = product.closeUpImages;
+    const productImages = product.images;
     productImages.push(imageUrl);
 
     await Product.findOneAndUpdate(
       { _id: ImageToSave.productId },
-      { closeUpImages: productImages },
+      { images: productImages },
       { new: true }
     );
 
