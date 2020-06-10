@@ -17,7 +17,7 @@ const productSchema = new Schema(
       required: true
     },
     price: {
-      type: Number,
+      type: Object,
       required: true
     },
     currency: {
