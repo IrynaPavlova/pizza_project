@@ -33,7 +33,7 @@ const productSchema = new Schema(
       required: true
     },
     subcategory: {
-      type: Array
+      type: String
     },
     likes: {
       type: Number,
