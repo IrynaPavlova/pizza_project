@@ -10,7 +10,7 @@ const passport = require("passport");
 const authRoute = Router();
 
 authRoute.post("/login", authLogin);
-authRoute.get("/logout", authLogout);
+authRoute.post("/logout", authLogout);
 authRoute.get("/current", authCurrent);
 authRoute.post("/register", authRegister);
 authRoute.get(

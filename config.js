@@ -1,9 +1,6 @@
 require("dotenv").config();
-console.log("process.env.PORT", process.env.PORT);
 
-//set NODE_ENV=dev &&
-
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 module.exports = {
   port: PORT,
