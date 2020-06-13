@@ -5,16 +5,14 @@ const Ingredient = require("../ingredients/ingredientSchema");
 const productSchema = new Schema(
   {
     sku: {
-      type: Number,
-      required: true
+      type: Number
     },
     name: {
       type: String,
       required: true
     },
     description: {
-      type: String,
-      required: true
+      type: String
     },
     price: {
       type: Object,
@@ -25,8 +23,7 @@ const productSchema = new Schema(
       required: true
     },
     creatorId: {
-      type: Number,
-      required: true
+      type: Number
     },
     categories: {
       type: String,
@@ -36,8 +33,7 @@ const productSchema = new Schema(
       type: String
     },
     likes: {
-      type: Number,
-      required: true
+      type: Number
     },
     images: {
       type: Array

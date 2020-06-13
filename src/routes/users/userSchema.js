@@ -29,6 +29,9 @@ const userSchema = new Schema(
     },
     orders: {
       type: Array
+    },
+    role: {
+      type: String
     }
   },
   {
