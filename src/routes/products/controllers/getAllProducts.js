@@ -1,5 +1,5 @@
 const Product = require("../productSchema");
-const getToken = require("../../../helpers/getToken");
+//const getToken = require("../../../helpers/getToken");
 
 const getAllProducts = async (request, response) => {
   try {

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+//const Product = require("../products/productSchema");
 
 const orderSchema = new Schema(
   {
@@ -13,7 +14,14 @@ const orderSchema = new Schema(
           product: {
             type: String,
             required: true
+            //ref: "Product"
           },
+          //product: [{ type: mongoose.Types.ObjectId, ref: "Product" }],
+          productName: {
+            type: String,
+            required: true
+          },
+
           type: {
             type: String,
             enum: ["M", "XL", "XXL"]

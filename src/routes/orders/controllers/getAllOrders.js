@@ -11,6 +11,7 @@ const getAllOrders = async (request, response) => {
     //   });
     // }
     const allOrders = await Order.find();
+    //.populate("products");
     response.status(200).json({
       status: "success",
       orders: allOrders
@@ -19,7 +20,7 @@ const getAllOrders = async (request, response) => {
     response.status(400).json({
       status: "error",
       message: error.message,
-      text: " no orders"
+      text: "no orders"
     });
   }
 };
