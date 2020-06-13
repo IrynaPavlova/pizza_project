@@ -1,7 +1,7 @@
-const Product = require("../productSchema");
+const Ingredient = require("../ingredientSchema");
 //const getToken = require("../../../helpers/getToken");
 
-const createProduct = async (request, response) => {
+const getAllingredients = async (request, response) => {
   try {
     // const token = getToken(request);
     // if (!token) {
@@ -10,22 +10,19 @@ const createProduct = async (request, response) => {
     //     message: "No token provided"
     //   });
     // }
-    const product = request.body;
+    const allIngredients = await Ingredient.find();
 
-    const newProduct = new Product(product);
-    const productToSave = await newProduct.save();
-
-    response.status(201).json({
+    response.status(200).json({
       status: "success",
-      product: productToSave
+      ingredients: allIngredients
     });
   } catch (error) {
     response.status(400).json({
       status: "error",
       message: error.message,
-      text: "product was not saved"
+      text: "no ingredients"
     });
   }
 };
 
-module.exports = createProduct;
+module.exports = getAllingredients;
