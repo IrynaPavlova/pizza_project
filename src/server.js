@@ -24,7 +24,7 @@ const startServer = port => {
   passportStrategies.initGoogleOAuthStrategy();
   passportStrategies.initFacebookOAuthStrategy();
   app
-    .use(cors({ origin: "http://localhost:3000" }))
+    .use(cors({ origin: "http://localhost:3001" }))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
     .use(passport.initialize())
