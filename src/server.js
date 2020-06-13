@@ -1,4 +1,5 @@
 //const morgan = require("morgan");
+const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -23,6 +24,7 @@ const startServer = port => {
   passportStrategies.initGoogleOAuthStrategy();
   passportStrategies.initFacebookOAuthStrategy();
   app
+    .use(cors({ origin: "http://localhost:3000" }))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
     .use(passport.initialize())
