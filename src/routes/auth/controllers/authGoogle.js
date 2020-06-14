@@ -8,10 +8,16 @@ const authGoogle = async (req, res) => {
     const payload = { userId };
     const token = generateToken(payload);
 
-    return res.status(201).json({
-      username: userName,
-      token: token
-    });
+    return (
+      res
+        .status(201)
+        ///.setHeader("Set-Cookie")
+        // .json({
+        //   username: userName,
+        //   token: token
+        // })
+        .redirect(`localhost:3000/auth/query?token=${token}&name=${userName}`)
+    );
   } catch (err) {
     res.status(404).json({
       status: "error",
