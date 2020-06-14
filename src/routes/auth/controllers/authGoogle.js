@@ -5,7 +5,7 @@ const authGoogle = async (req, res) => {
     const user = req.user;
     const userName = user.username;
     const userId = user._id;
-    const email = user._id;
+    const email = user.email;
     const payload = { userId };
     const token = generateToken(payload);
 
