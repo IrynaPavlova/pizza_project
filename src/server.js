@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const corsMiddleware = require("cors");
 const passport = require("passport");
 const passportStrategies = require("./routes/auth/passportStrategies");
-const verifyToken = require("./helpers/verifyToken");
+//const verifyToken = require("./helpers/verifyToken");
 const authRoute = require("./routes/auth/authRoute");
 const productRoute = require("./routes/products/productRoute");
 const userRoute = require("./routes/users/userRoute");
@@ -14,6 +14,7 @@ const orderRoute = require("./routes/orders/orderRoute");
 const imageRoute = require("./routes/images/imageRoute");
 const commentsRoute = require("./routes/comments/commentRoute");
 const ingredientRoute = require("./routes/ingredients/ingredientRoute");
+const developerRoute = require("./routes/developers/developerRoute");
 const { mongodbUrl } = require("../config");
 const app = express();
 
@@ -41,6 +42,7 @@ const startServer = port => {
     .use("/images", imageRoute)
     .use("/comments", commentsRoute)
     .use("/ingredients", ingredientRoute)
+    .use("/developers", developerRoute)
     .use(errorHandler);
 
   mongoose.connect(
