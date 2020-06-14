@@ -8,10 +8,9 @@ const authFacebook = async (req, res) => {
     const payload = { userId };
     const token = generateToken(payload);
 
-    return res.status(201).json({
-      username: userName,
-      token: token
-    });
+    return res
+      .status(201)
+      .redirect(`http://localhost:3000/auth/?token=${token}&name=${userName}`);
   } catch (err) {
     res.status(404).json({
       status: "error",
