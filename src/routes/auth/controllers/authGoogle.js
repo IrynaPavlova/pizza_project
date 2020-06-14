@@ -16,7 +16,7 @@ const authGoogle = async (req, res) => {
         //   username: userName,
         //   token: token
         // })
-        .redirect(`localhost:3000/auth/query?token=${token}&name=${userName}`)
+        .redirect(`localhost:3000/auth/?token=${token}&name=${userName}`)
     );
   } catch (err) {
     res.status(404).json({
