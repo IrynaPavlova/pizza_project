@@ -7,7 +7,7 @@ const path = require("path");
 const storage = multer.diskStorage({
   destination: "static",
   filename: function(req, file, cb) {
-    console.log("file", file);
+    //console.log("file", file);
     const ext = path.parse(file.originalname).ext;
     cb(null, Date.now() + ext);
   }
@@ -75,7 +75,6 @@ imageRoute.post(
   //agregateBodyWithImage, saveImage
   upload.single("file"),
   (req, res, next) => {
-    console.log("req.file", req.file);
     const filePath = req.file.path;
     function main(bucketName = "pizza_project", filename = `${filePath}`) {
       const { Storage } = require("@google-cloud/storage");
@@ -101,9 +100,13 @@ imageRoute.post(
           public: true
         });
 
-        console.log("fileInfo", fileInfo);
+        //console.log("fileInfo", fileInfo);
 
-        console.log(`${filename} uploaded to ${bucketName}.`);
+        // fileInfo.find(elem => {
+        //   console.log("elem.mediaLink", elem.mediaLink);
+        // });
+
+        ///console.log(`${filename} uploaded to ${bucketName}.`);
       }
 
       uploadFile().catch(console.error);
@@ -111,6 +114,8 @@ imageRoute.post(
     }
 
     main(...process.argv.slice(2));
+
+    // console.log("req.file", req.file);
 
     res.status(200).send();
   }
