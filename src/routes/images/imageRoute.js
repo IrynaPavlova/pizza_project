@@ -3,11 +3,12 @@ const saveImage = require("./controllers/saveImage");
 const agregateBodyWithImage = require("../../helpers/agregateBodyWithImage");
 const multer = require("multer");
 const path = require("path");
+const Image = require("./imageSchema");
+const Product = require("../products/productSchema");
 
 const storage = multer.diskStorage({
   destination: "static",
   filename: function(req, file, cb) {
-    //console.log("file", file);
     const ext = path.parse(file.originalname).ext;
     cb(null, Date.now() + ext);
   }
@@ -74,7 +75,7 @@ imageRoute.post(
   "/",
   //agregateBodyWithImage, saveImage
   upload.single("file"),
-  (req, res, next) => {
+  async (req, res, next) => {
     const filePath = req.file.path;
     function main(bucketName = "pizza_project", filename = `${filePath}`) {
       const { Storage } = require("@google-cloud/storage");
@@ -85,39 +86,54 @@ imageRoute.post(
       });
 
       async function uploadFile() {
-        // Uploads a local file to the bucket
         const fileInfo = await storage.bucket(bucketName).upload(filename, {
-          // Support for HTTP requests made with `Accept-Encoding: gzip`
           gzip: true,
-          // By setting the option `destination`, you can change the name of the
-          // object you are uploading to a bucket.
           metadata: {
-            // Enable long-lived HTTP caching headers
-            // Use only if the contents of the file will never change
-            // (If the contents will change, use cacheControl: 'no-cache')
             cacheControl: "public, max-age=31536000"
           },
           public: true
         });
 
-        //console.log("fileInfo", fileInfo);
+        const productId = req.body.productId;
+        const imageUrl = fileInfo.find(elem => {
+          if (elem.mediaLink !== undefined) {
+            return elem.mediaLink;
+          }
+        });
 
-        // fileInfo.find(elem => {
-        //   console.log("elem.mediaLink", elem.mediaLink);
-        // });
+        const imageData = {
+          productId: productId,
+          file: imageUrl.mediaLink
+        };
 
-        ///console.log(`${filename} uploaded to ${bucketName}.`);
+        try {
+          const newImage = new Image(imageData);
+          const ImageToSave = await newImage.save();
+          const product = await Product.findById(productId);
+          const productImages = product.images;
+          productImages.push(imageData.file);
+
+          await Product.findOneAndUpdate(
+            { _id: ImageToSave.productId },
+            { images: productImages },
+            { new: true }
+          );
+
+          res.status(201).json({
+            status: "success",
+            image: ImageToSave
+          });
+        } catch (error) {
+          res.status(400).json({
+            status: "error",
+            message: error.message,
+            text: "image was not saved"
+          });
+        }
       }
-
       uploadFile().catch(console.error);
-      // [END storage_upload_file]
     }
-
     main(...process.argv.slice(2));
-
-    // console.log("req.file", req.file);
-
-    res.status(200).send();
   }
 );
 
