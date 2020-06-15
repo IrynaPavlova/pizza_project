@@ -1,7 +1,7 @@
 const path = require("path");
 const cwd = path.join(__dirname, "..");
 
-function main(bucketName = "pizza_project", filename = "1587196412424.png") {
+function main(bucketName = "pizza_project", filename = "123.png") {
   // [START storage_upload_file]
   /**
    * TODO(developer): Uncomment the following lines before running the sample.

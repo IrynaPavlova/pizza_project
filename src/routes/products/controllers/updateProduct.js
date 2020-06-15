@@ -3,13 +3,13 @@ const getToken = require("../../../helpers/getToken");
 
 const updateProduct = async (request, response) => {
   try {
-    const token = getToken(request);
-    if (!token) {
-      return response.status(403).send({
-        status: "failed",
-        message: "No token provided"
-      });
-    }
+    // const token = getToken(request);
+    // if (!token) {
+    //   return response.status(403).send({
+    //     status: "failed",
+    //     message: "No token provided"
+    //   });
+    // }
     const product = request.body;
     const id = request.params.id;
 

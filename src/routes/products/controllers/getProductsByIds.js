@@ -3,13 +3,13 @@ const getToken = require("../../../helpers/getToken");
 
 const getProductByIds = async (request, response) => {
   try {
-    const token = getToken(request);
-    if (!token) {
-      return response.status(403).send({
-        status: "failed",
-        message: "No token provided"
-      });
-    }
+    // const token = getToken(request);
+    // if (!token) {
+    //   return response.status(403).send({
+    //     status: "failed",
+    //     message: "No token provided"
+    //   });
+    // }
     const stringIds = Object.values(request.query)[0];
     const ids = stringIds.slice(1, stringIds.length - 1).split(",");
 
