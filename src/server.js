@@ -17,6 +17,7 @@ const commentsRoute = require("./routes/comments/commentRoute");
 const ingredientRoute = require("./routes/ingredients/ingredientRoute");
 const developerRoute = require("./routes/developers/developerRoute");
 const promoRoute = require("./routes/promo/promoRoute");
+const statusRoute = require("./routes/status/statusRoute");
 const { mongodbUrl } = require("../config");
 const app = express();
 
@@ -47,6 +48,7 @@ const startServer = port => {
     .use("/ingredients", ingredientRoute)
     .use("/developers", developerRoute)
     .use("/promo", promoRoute)
+    .use("/status", statusRoute)
     .use(errorHandler);
 
   mongoose.connect(

@@ -11,12 +11,13 @@ const createOrder = async (request, response) => {
     //     message: "No token provided"
     //   });
     // }
-    const newOrder = new Order(request.body);
-    const order = await newOrder.save();
+    const order = { ...request.body, status: "new" };
+    const newOrder = new Order(order);
+    const orderToSave = await newOrder.save();
 
     const user = await User.findById(order.creator);
     const userOrders = user.orders;
-    userOrders.push(order);
+    userOrders.push(orderToSave);
 
     await User.findOneAndUpdate(
       { _id: order.creator },
@@ -24,7 +25,10 @@ const createOrder = async (request, response) => {
       { new: true }
     );
 
-    response.status(201).json({ status: "success", order });
+    response.status(201).json({
+      status: "success",
+      newOrder: orderToSave
+    });
   } catch (err) {
     response.status(404).json({ status: "error", message: err.message });
   }
