@@ -36,10 +36,10 @@ const productSchema = new Schema(
       type: Number
     },
     images: {
-      type: Array
+      type: String
     },
     closeUpImages: {
-      type: Array
+      type: String
     },
 
     ingredients: [{ type: mongoose.Types.ObjectId, ref: "Ingredient" }]

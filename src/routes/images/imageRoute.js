@@ -109,13 +109,14 @@ imageRoute.post(
         try {
           const newImage = new Image(imageData);
           const ImageToSave = await newImage.save();
-          const product = await Product.findById(productId);
-          const productImages = product.images;
-          productImages.push(imageData.file);
+
+          // const product = await Product.findById(productId);
+          // const productImages = product.images;
+          // productImages.push(imageData.file);
 
           await Product.findOneAndUpdate(
             { _id: ImageToSave.productId },
-            { images: productImages },
+            { images: imageData.file },
             { new: true }
           );
 
