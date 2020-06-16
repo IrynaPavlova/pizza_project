@@ -12,9 +12,11 @@ const productRoute = require("./routes/products/productRoute");
 const userRoute = require("./routes/users/userRoute");
 const orderRoute = require("./routes/orders/orderRoute");
 const imageRoute = require("./routes/images/imageRoute");
+const imageSliderRoute = require("./routes/images/imageSliderRoute");
 const commentsRoute = require("./routes/comments/commentRoute");
 const ingredientRoute = require("./routes/ingredients/ingredientRoute");
 const developerRoute = require("./routes/developers/developerRoute");
+const promoRoute = require("./routes/promo/promoRoute");
 const { mongodbUrl } = require("../config");
 const app = express();
 
@@ -40,9 +42,11 @@ const startServer = port => {
     .use("/users", userRoute)
     .use("/orders", orderRoute)
     .use("/images", imageRoute)
+    .use("/images-slider", imageSliderRoute)
     .use("/comments", commentsRoute)
     .use("/ingredients", ingredientRoute)
     .use("/developers", developerRoute)
+    .use("/promo", promoRoute)
     .use(errorHandler);
 
   mongoose.connect(

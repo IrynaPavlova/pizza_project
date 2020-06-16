@@ -12,7 +12,8 @@ const getUserById = async (request, response) => {
     // }
     const id = request.params.id;
     const findUser = await User.findById(id);
-    response.status(200).json({
+
+    response.status(200).send({
       status: "success",
       user: findUser
     });

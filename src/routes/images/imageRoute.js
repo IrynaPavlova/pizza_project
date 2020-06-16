@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const saveImage = require("./controllers/saveImage");
-const agregateBodyWithImage = require("../../helpers/agregateBodyWithImage");
+// const saveImage = require("./controllers/saveImage");
+// const agregateBodyWithImage = require("../../helpers/agregateBodyWithImage");
 const multer = require("multer");
 const path = require("path");
 const Image = require("./imageSchema");
@@ -79,8 +79,6 @@ imageRoute.post(
     const filePath = req.file.path;
     function main(bucketName = "pizza_project", filename = `${filePath}`) {
       const { Storage } = require("@google-cloud/storage");
-
-      // Creates a client
       const storage = new Storage({
         keyFilename: "pizza-275717-24a25e883fb2.json"
       });

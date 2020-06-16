@@ -22,9 +22,6 @@ const productSchema = new Schema(
       type: String,
       required: true
     },
-    creatorId: {
-      type: Number
-    },
     categories: {
       type: String,
       required: true
@@ -36,9 +33,6 @@ const productSchema = new Schema(
       type: Number
     },
     images: {
-      type: String
-    },
-    closeUpImages: {
       type: String
     },
 
