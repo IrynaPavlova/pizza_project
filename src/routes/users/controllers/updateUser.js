@@ -4,13 +4,13 @@ const getToken = require("../../../helpers/getToken");
 
 const updateUser = async (request, response) => {
   try {
-    const token = getToken(request);
-    if (!token) {
-      return response.status(403).send({
-        status: "failed",
-        message: "No token provided"
-      });
-    }
+    // const token = getToken(request);
+    // if (!token) {
+    //   return response.status(403).send({
+    //     status: "failed",
+    //     message: "No token provided"
+    //   });
+    // }
     const user = request.body;
     const id = request.params.id;
 
