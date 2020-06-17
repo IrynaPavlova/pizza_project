@@ -3,7 +3,7 @@ const generateToken = require("../../../helpers/generateToken");
 const authGoogle = async (req, res) => {
   try {
     const user = req.user;
-    console.log("user", user);
+    //console.log("user", user);
     const userName = user.username;
     const userId = user._id;
     const email = user.email;

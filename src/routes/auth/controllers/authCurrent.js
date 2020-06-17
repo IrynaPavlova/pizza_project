@@ -12,7 +12,7 @@ const authCurrent = async (request, response) => {
       });
     }
     const userData = jwt.decode(token);
-    const user = await User.findById(userData.id);
+    const user = await User.findById(userData.id || userData.userId);
 
     response.status(200).json({ status: "success", user: user });
   } catch (error) {
