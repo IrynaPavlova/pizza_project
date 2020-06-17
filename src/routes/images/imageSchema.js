@@ -8,8 +8,7 @@ const imageSchema = new Schema(
       required: true
     },
     productId: {
-      type: String,
-      required: true
+      type: String
     }
   },
   {

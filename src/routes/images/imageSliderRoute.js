@@ -2,7 +2,7 @@ const { Router } = require("express");
 const multer = require("multer");
 const path = require("path");
 const Image = require("./imageSchema");
-const Promo = require("../promo/promoSchema");
+//const Promo = require("../promo/promoSchema");
 
 const storage = multer.diskStorage({
   destination: "static",
@@ -86,15 +86,17 @@ imageSliderRoute.post("/", upload.single("file"), async (req, res, next) => {
         public: true
       });
 
-      const productId = req.body.productId;
+      //const productId = req.body.productId;
       const imageUrl = fileInfo.find(elem => {
         if (elem.mediaLink !== undefined) {
           return elem.mediaLink;
         }
       });
 
+      // const urlImg = imageUrl.mediaLink
+
       const imageData = {
-        productId: productId,
+        //productId: productId,
         file: imageUrl.mediaLink
       };
 
@@ -102,11 +104,11 @@ imageSliderRoute.post("/", upload.single("file"), async (req, res, next) => {
         const newImage = new Image(imageData);
         const ImageToSave = await newImage.save();
 
-        await Promo.findOneAndUpdate(
-          { _id: ImageToSave.productId },
-          { images: imageData.file },
-          { new: true }
-        );
+        // await Promo.findOneAndUpdate(
+        //   { _id: ImageToSave.productId },
+        //   { images: imageData.file },
+        //   { new: true }
+        // );
 
         res.status(201).json({
           status: "success",
