@@ -4,7 +4,7 @@ const { Router } = require("express");
 const multer = require("multer");
 const path = require("path");
 const Image = require("./imageSchema");
-const Product = require("../products/productSchema");
+//const Product = require("../products/productSchema");
 
 const storage = multer.diskStorage({
   destination: "static",
@@ -92,7 +92,7 @@ imageRoute.post(
           public: true
         });
 
-        const productId = req.body.productId;
+        //const productId = req.body.productId;
         const imageUrl = fileInfo.find(elem => {
           if (elem.mediaLink !== undefined) {
             return elem.mediaLink;
@@ -100,7 +100,6 @@ imageRoute.post(
         });
 
         const imageData = {
-          productId: productId,
           file: imageUrl.mediaLink
         };
 
@@ -112,11 +111,11 @@ imageRoute.post(
           // const productImages = product.images;
           // productImages.push(imageData.file);
 
-          await Product.findOneAndUpdate(
-            { _id: ImageToSave.productId },
-            { images: imageData.file },
-            { new: true }
-          );
+          // await Product.findOneAndUpdate(
+          //   { _id: ImageToSave.productId },
+          //   { images: imageData.file },
+          //   { new: true }
+          // );
 
           res.status(201).json({
             status: "success",

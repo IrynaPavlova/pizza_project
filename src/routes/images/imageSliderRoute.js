@@ -93,10 +93,7 @@ imageSliderRoute.post("/", upload.single("file"), async (req, res, next) => {
         }
       });
 
-      // const urlImg = imageUrl.mediaLink
-
       const imageData = {
-        //productId: productId,
         file: imageUrl.mediaLink
       };
 
