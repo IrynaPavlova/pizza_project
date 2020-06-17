@@ -8,9 +8,10 @@ const productSchema = new Schema(
       type: Number
     },
     name: {
-      type: String,
-      required: true
+      any: {}
     },
+    // type: String,
+    // required: true
     description: {
       type: String
     },
