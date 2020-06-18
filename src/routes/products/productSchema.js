@@ -5,13 +5,14 @@ const Ingredient = require("../ingredients/ingredientSchema");
 const productSchema = new Schema(
   {
     sku: {
-      type: Number
+      type: Number ///не нужно!!!
     },
     name: {
       type: Object,
       required: true
     },
     description: {
+      ///не нужно!!!
       type: String
     },
     price: {
@@ -19,24 +20,23 @@ const productSchema = new Schema(
       required: true
     },
     currency: {
-      type: String,
-      required: true
+      type: String /// не нужно!!!
     },
     categories: {
       type: String,
       required: true
     },
     subcategory: {
-      type: String
+      type: String ////только для пиццы!!!!!!
     },
     likes: {
-      type: Number
+      type: Number ///не нужно!!!!
     },
     images: {
-      type: String
+      type: String ///не нужно!!!!
     },
 
-    ingredients: [{ type: mongoose.Types.ObjectId, ref: "Ingredient" }]
+    ingredients: [{ type: mongoose.Types.ObjectId, ref: "Ingredient" }] ///для пиццы!!!!!
   },
   {
     timestamps: true
