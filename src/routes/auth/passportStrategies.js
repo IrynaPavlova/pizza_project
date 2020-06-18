@@ -12,19 +12,13 @@ const findOrCreateUserByEmail = async (email, username) => {
   );
 };
 
-// const findOrCreateUserById = async (id, username) => {
-//   return User.findOneAndUpdate(
-//     { id },
-//     { $setOnInsert: { username } },
-//     { upsert: true, new: true }
-//   );
-
-//   // return User.findOneAndUpdate(
-//   //   { id },
-//   //   { $setOnInsert: { username } },
-//   //   { upsert: true, new: true }
-//   // );
-// };
+const findOrCreateUserByName = async username => {
+  return User.findOneAndUpdate(
+    { username },
+    { $setOnInsert: { username } },
+    { upsert: true, new: true }
+  );
+};
 
 class PassportStrategies {
   initGoogleOAuthStrategy() {
@@ -54,12 +48,8 @@ class PassportStrategies {
         profile,
         done
       ) {
-        const user = await findOrCreateUserByEmail(
-          profile.email,
-          //profile.id,
-          profile.displayName
-        );
-        console.log("profile", profile);
+        const user = await findOrCreateUserByName(profile.displayName);
+        //console.log("profile", profile);
         done(null, user);
       })
     );
