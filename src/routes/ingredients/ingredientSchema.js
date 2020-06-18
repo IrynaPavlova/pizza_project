@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const ingredientSchema = new Schema(
   {
     name: {
-      type: String,
+      type: Object,
       required: true
     }
   },

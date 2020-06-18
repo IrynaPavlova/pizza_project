@@ -12,6 +12,20 @@ const findOrCreateUserByEmail = async (email, username) => {
   );
 };
 
+// const findOrCreateUserById = async (id, username) => {
+//   return User.findOneAndUpdate(
+//     { id },
+//     { $setOnInsert: { username } },
+//     { upsert: true, new: true }
+//   );
+
+//   // return User.findOneAndUpdate(
+//   //   { id },
+//   //   { $setOnInsert: { username } },
+//   //   { upsert: true, new: true }
+//   // );
+// };
+
 class PassportStrategies {
   initGoogleOAuthStrategy() {
     passport.use(
@@ -42,8 +56,10 @@ class PassportStrategies {
       ) {
         const user = await findOrCreateUserByEmail(
           profile.email,
+          //profile.id,
           profile.displayName
         );
+        console.log("profile", profile);
         done(null, user);
       })
     );
