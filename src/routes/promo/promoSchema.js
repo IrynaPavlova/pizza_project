@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const promoSchema = new Schema(
   {
     title: {
-      type: String,
+      type: Object,
       required: true
     },
     description: {
-      type: String,
+      type: Object,
       required: true
     },
     images: {
