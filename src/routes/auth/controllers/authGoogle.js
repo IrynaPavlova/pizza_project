@@ -10,8 +10,8 @@ const authGoogle = async (req, res) => {
     const token = generateToken(payload);
 
     return res.status(201).redirect(
-      `http://localhost:3000/auth/?token=${token}&name=${userName}&email=${email}&id=${userId}`
-      //`https://quizzical-goldstine-2423c6.netlify.app/auth/?token=${token}&name=${userName}&email=${email}`
+      //`http://localhost:3000/auth/?token=${token}&name=${userName}&email=${email}&id=${userId}`
+      `https://quizzical-goldstine-2423c6.netlify.app/auth/?token=${token}&name=${userName}&email=${email}`
     );
   } catch (err) {
     res.status(404).json({

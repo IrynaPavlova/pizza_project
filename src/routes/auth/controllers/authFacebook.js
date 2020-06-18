@@ -16,8 +16,8 @@ const authFacebook = async (req, res) => {
         //.send({ userId, token, userName, email });
 
         .redirect(
-          `http://localhost:3000/auth/?token=${token}&name=${userName}&email=${email}&id=${userId}`
-          //`https://quizzical-goldstine-2423c6.netlify.app/auth/?token=${token}&name=${userName}&email=${email}`
+          //`http://localhost:3000/auth/?token=${token}&name=${userName}&email=${email}&id=${userId}`
+          `https://quizzical-goldstine-2423c6.netlify.app/auth/?token=${token}&name=${userName}&email=${email}`
         )
     );
   } catch (err) {
