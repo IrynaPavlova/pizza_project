@@ -11,12 +11,9 @@ const orderSchema = new Schema(
     productsList: {
       type: [
         {
-          // product: {
-          //   type: Object,
-          //   required: true
-          //   //ref: "Product"
-          // },
-          //product: [{ type: mongoose.Types.ObjectId, ref: "Product" }],
+          product: {
+            type: Object
+          },
           productName: {
             type: Object,
             required: true
