@@ -11,9 +11,9 @@ const orderSchema = new Schema(
     productsList: {
       type: [
         {
-          product: {
-            type: Object
-          },
+          // product: {
+          //   type: Object
+          // },
           productName: {
             type: Object,
             required: true

@@ -7,8 +7,8 @@ const authCurrent = async (request, response) => {
     const token = getToken(request);
     if (!token) {
       return response.status(403).send({
-        status: "failed",
-        message: "No token provided"
+        status: "error",
+        text: "no token provided"
       });
     }
     const userData = jwt.decode(token);

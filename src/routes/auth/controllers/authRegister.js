@@ -33,7 +33,7 @@ const authRegister = async (request, response) => {
     response.status(400).json({
       status: "error",
       message: error.message,
-      text: "user was not saved"
+      text: "user unregistered"
     });
   }
 };
