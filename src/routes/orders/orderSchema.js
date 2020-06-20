@@ -11,11 +11,11 @@ const orderSchema = new Schema(
     productsList: {
       type: [
         {
-          product: {
-            type: Object,
-            required: true
-            //ref: "Product"
-          },
+          // product: {
+          //   type: Object,
+          //   required: true
+          //   //ref: "Product"
+          // },
           //product: [{ type: mongoose.Types.ObjectId, ref: "Product" }],
           productName: {
             type: Object,
@@ -24,7 +24,7 @@ const orderSchema = new Schema(
 
           type: {
             type: String,
-            enum: ["M", "XL", "XXL"]
+            enum: ["M", "L", "XL"]
           },
           itemsCount: {
             type: Number,
