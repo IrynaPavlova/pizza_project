@@ -11,7 +11,11 @@ const authRegister = async (request, response) => {
     if (emailMatch) {
       return response.status(404).json({
         status: "error",
-        text: "user already exists"
+        text: {
+          ru: "Адрес электронной почты уже занят",
+          eng: "Email already exists",
+          ukr: "Адреса електронної пошти вже зайнята"
+        }
       });
     }
 
@@ -33,7 +37,11 @@ const authRegister = async (request, response) => {
     response.status(400).json({
       status: "error",
       message: error.message,
-      text: "user unregistered"
+      text: {
+        ru: "Что-то пошло не так. Попоробуйте еще раз",
+        eng: "Something went wrong. Try again",
+        ukr: "Щось пішло не так. Спробуйте ще раз."
+      }
     });
   }
 };

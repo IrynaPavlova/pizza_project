@@ -8,7 +8,11 @@ const authCurrent = async (request, response) => {
     if (!token) {
       return response.status(403).send({
         status: "error",
-        text: "no token provided"
+        text: {
+          ru: "Вы не аутентифицированы",
+          eng: "You are not authenticated",
+          ukr: "Ви не автентифіковані"
+        }
       });
     }
     const userData = jwt.decode(token);
@@ -19,7 +23,11 @@ const authCurrent = async (request, response) => {
     response.status(404).json({
       status: "error",
       message: error.message,
-      text: "user was not found"
+      text: {
+        ru: "Что-то пошло не так. Попоробуйте еще раз",
+        eng: "Something went wrong. Try again",
+        ukr: "Щось пішло не так. Спробуйте ще раз."
+      }
     });
   }
 };

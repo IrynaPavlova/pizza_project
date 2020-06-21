@@ -9,22 +9,19 @@ const authLogin = async (request, response) => {
     const { email, password } = request.body;
     const user = await User.findOne({ email });
 
-    if (!user) {
-      return response.status(404).json({
-        status: "error",
-        text: "email not found"
-      });
-    }
-
     const id = user._id;
 
     const correctPassword = passwordMatch(password, user.password);
 
-    if (!correctPassword) {
+    if (!user || !correctPassword) {
       response.status(404).json({
         status: "error",
         message: error.message,
-        text: "wrong password"
+        text: {
+          ru: "Некорректный адрес электронной почты или пароль",
+          eng: "Invalid email or password",
+          ukr: "Некоректна адреса електронної пошти або пароль"
+        }
       });
     }
 
@@ -36,7 +33,11 @@ const authLogin = async (request, response) => {
     response.status(400).json({
       status: "error",
       message: error.message,
-      text: "user was not authenticated"
+      text: {
+        ru: "Что-то пошло не так. Попоробуйте еще раз",
+        eng: "Something went wrong. Try again",
+        ukr: "Щось пішло не так. Спробуйте ще раз."
+      }
     });
   }
 };
