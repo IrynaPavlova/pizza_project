@@ -20,8 +20,8 @@ const orderSchema = new Schema(
           },
 
           type: {
-            type: String,
-            enum: ["M", "L", "XL"]
+            type: String
+            //enum: ["M", "L", "XL"]
           },
           itemsCount: {
             type: Number,
