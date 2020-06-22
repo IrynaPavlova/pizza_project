@@ -17,6 +17,16 @@ const authCurrent = async (request, response) => {
     }
     const userData = jwt.decode(token);
     const user = await User.findById(userData.id || userData.userId);
+    if (!user) {
+      return response.status(403).send({
+        status: "error",
+        text: {
+          ru: "Вы не аутентифицированы",
+          eng: "You are not authenticated",
+          ukr: "Ви не автентифіковані"
+        }
+      });
+    }
 
     response.status(200).json({ status: "success", user: user });
   } catch (error) {
