@@ -13,7 +13,7 @@ const authLogin = async (request, response) => {
         status: "error",
         text: {
           ru: "Некорректный адрес электронной почты или пароль",
-          eng: "Invalid email or password",
+          en: "Invalid email or password",
           ukr: "Некоректна адреса електронної пошти або пароль"
         }
       });
@@ -28,7 +28,7 @@ const authLogin = async (request, response) => {
         status: "error",
         text: {
           ru: "Некорректный пароль адрес электронной почты или пароль",
-          eng: "Invalid email or password",
+          en: "Invalid email or password",
           ukr: "Некоректна адреса електронної пошти або пароль"
         }
       });
@@ -44,7 +44,7 @@ const authLogin = async (request, response) => {
       message: error.message,
       text: {
         ru: "Что-то пошло не так. Попоробуйте еще раз",
-        eng: "Something went wrong. Try again",
+        en: "Something went wrong. Try again",
         ukr: "Щось пішло не так. Спробуйте ще раз."
       }
     });

@@ -10,7 +10,7 @@ const authCurrent = async (request, response) => {
         status: "error",
         text: {
           ru: "Вы не аутентифицированы",
-          eng: "You are not authenticated",
+          en: "You are not authenticated",
           ukr: "Ви не автентифіковані"
         }
       });
@@ -22,7 +22,7 @@ const authCurrent = async (request, response) => {
         status: "error",
         text: {
           ru: "Вы не аутентифицированы",
-          eng: "You are not authenticated",
+          en: "You are not authenticated",
           ukr: "Ви не автентифіковані"
         }
       });
@@ -35,7 +35,7 @@ const authCurrent = async (request, response) => {
       message: error.message,
       text: {
         ru: "Что-то пошло не так. Попоробуйте еще раз",
-        eng: "Something went wrong. Try again",
+        en: "Something went wrong. Try again",
         ukr: "Щось пішло не так. Спробуйте ще раз."
       }
     });

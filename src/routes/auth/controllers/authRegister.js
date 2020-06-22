@@ -13,7 +13,7 @@ const authRegister = async (request, response) => {
         status: "error",
         text: {
           ru: "Адрес электронной почты уже занят",
-          eng: "Email already exists",
+          en: "Email already exists",
           ukr: "Адреса електронної пошти вже зайнята"
         }
       });
@@ -39,7 +39,7 @@ const authRegister = async (request, response) => {
       message: error.message,
       text: {
         ru: "Что-то пошло не так. Попоробуйте еще раз",
-        eng: "Something went wrong. Try again",
+        en: "Something went wrong. Try again",
         ukr: "Щось пішло не так. Спробуйте ще раз."
       }
     });
