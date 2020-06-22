@@ -12,8 +12,8 @@ const deleteProduct = async (request, response) => {
     // }
     const id = request.params.id;
 
-    const productToDelete = await Product.findById(id);
-    await productToDelete.remove();
+    // const productToDelete = await Product.findById(id);
+    // await productToDelete.remove();
 
     response.status(200).json({
       status: "success",
