@@ -14,6 +14,9 @@ const developerSchema = new Schema(
     social: {
       type: String,
       required: true
+    },
+    github: {
+      type: String
     }
   },
   {
