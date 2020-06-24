@@ -27,7 +27,7 @@ const authLogin = async (request, response) => {
       return response.status(404).json({
         status: "error",
         text: {
-          ru: "Некорректный пароль адрес электронной почты или пароль",
+          ru: "Некорректный адрес электронной почты или пароль",
           en: "Invalid email or password",
           ukr: "Некоректна адреса електронної пошти або пароль"
         }
