@@ -33,11 +33,12 @@ const updateProduct = async (request, response) => {
     if (product.error) {
       return response.status(400).json(product.error.details[0].message);
     }
+
     const id = request.params.id;
 
     const updatedProduct = await Product.findOneAndUpdate(
       { _id: id },
-      product,
+      product.value,
       { new: true }
     );
 
