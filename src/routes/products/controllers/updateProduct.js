@@ -16,7 +16,7 @@ const validation = Joi.object().keys({
     .required(),
   subcategory: Joi.string().valid(...subcategories),
   likes: Joi.number(),
-  images: Joi.string(),
+  images: Joi.string().required(),
   ingredients: Joi.array()
 });
 
