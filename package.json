@@ -39,6 +39,7 @@
     "shortid": "^2.2.15",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
-    "imagemin-pngquant": "^8.0.0"
+    "imagemin-pngquant": "^8.0.0",
+    "jimp": "^0.12.1"
   }
 }
