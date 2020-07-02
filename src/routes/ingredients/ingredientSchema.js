@@ -4,8 +4,18 @@ const { Schema } = mongoose;
 const ingredientSchema = new Schema(
   {
     name: {
-      type: Object,
-      required: true
+      ru: {
+        type: String,
+        required: true
+      },
+      en: {
+        type: String,
+        required: true
+      },
+      ukr: {
+        type: String,
+        required: true
+      }
     }
   },
   {
