@@ -7,7 +7,17 @@ const subcategories = ["classic", "premium", "branded", ""];
 
 const validation = Joi.object().keys({
   sku: Joi.number(),
-  name: Joi.object().required(),
+  name: Joi.object({
+    ru: Joi.string()
+      .min(3)
+      .required(),
+    en: Joi.string()
+      .min(3)
+      .required(),
+    ukr: Joi.string()
+      .min(3)
+      .required()
+  }).required(),
   description: Joi.string(),
   price: Joi.object().required(),
   currency: Joi.string(),
@@ -19,6 +29,18 @@ const validation = Joi.object().keys({
   images: Joi.string().required(),
   ingredients: Joi.array()
 });
+
+// .keys({
+//   ru: Joi.string()
+//     .allow("")
+//     .required(),
+//   en: Joi.string()
+//     .allow("")
+//     .required(),
+//   ukr: Joi.string()
+//     .allow("")
+//     .required()
+// })
 
 const updateProduct = async (request, response) => {
   try {
