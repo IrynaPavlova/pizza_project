@@ -58,7 +58,8 @@ const productSchema = new Schema(
       type: Number
     },
     images: {
-      type: String
+      type: String,
+      required: true
     },
 
     ingredients: [{ type: mongoose.Types.ObjectId, ref: "Ingredient" }]
