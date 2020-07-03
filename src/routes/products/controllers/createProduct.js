@@ -19,7 +19,7 @@ const validation = Joi.object().keys({
       .min(3)
       .required()
   }).required(),
-  description: Joi.string(),
+  description: Joi.number(),
   //price: Joi.object().required(),
   price: Joi.alternatives().try(
     {
