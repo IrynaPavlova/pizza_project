@@ -19,7 +19,17 @@ const validation = Joi.object().keys({
       .required()
   }).required(),
   description: Joi.string(),
-  price: Joi.object().required(),
+  //price: Joi.object().required(),
+  price: Joi.alternatives().try(
+    {
+      M: Joi.string().required(),
+      L: Joi.string().required(),
+      XL: Joi.string().required()
+    },
+    {
+      price: Joi.string().required()
+    }
+  ),
   currency: Joi.string(),
   categories: Joi.string()
     .valid(...categories)
@@ -29,18 +39,6 @@ const validation = Joi.object().keys({
   images: Joi.string().required(),
   ingredients: Joi.array()
 });
-
-// .keys({
-//   ru: Joi.string()
-//     .allow("")
-//     .required(),
-//   en: Joi.string()
-//     .allow("")
-//     .required(),
-//   ukr: Joi.string()
-//     .allow("")
-//     .required()
-// })
 
 const updateProduct = async (request, response) => {
   try {

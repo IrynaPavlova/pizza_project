@@ -24,9 +24,23 @@ const productSchema = new Schema(
     description: {
       type: String
     },
+    // price: {
+    //   type: Object,
+    //   required: true
+    // },
     price: {
-      type: Object,
-      required: true
+      M: {
+        type: String
+      },
+      L: {
+        type: String
+      },
+      XL: {
+        type: String
+      },
+      price: {
+        type: String
+      }
     },
     currency: {
       type: String
