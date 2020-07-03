@@ -1,5 +1,5 @@
 const Product = require("../productSchema");
-const getToken = require("../../../helpers/getToken");
+//const getToken = require("../../../helpers/getToken");
 const Joi = require("joi");
 
 const categories = ["pizza", "drinks", "sides", "desserts"];
@@ -22,12 +22,20 @@ const validation = Joi.object().keys({
   //price: Joi.object().required(),
   price: Joi.alternatives().try(
     {
-      M: Joi.string().required(),
-      L: Joi.string().required(),
-      XL: Joi.string().required()
+      M: Joi.number()
+        .min(2)
+        .required(),
+      L: Joi.number()
+        .min(2)
+        .required(),
+      XL: Joi.number()
+        .min(2)
+        .required()
     },
     {
-      price: Joi.string().required()
+      price: Joi.number()
+        .min(2)
+        .required()
     }
   ),
   currency: Joi.string(),

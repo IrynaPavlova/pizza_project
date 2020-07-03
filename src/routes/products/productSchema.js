@@ -22,26 +22,26 @@ const productSchema = new Schema(
       }
     },
     description: {
-      type: String
+      type: Number
+    },
+    price: {
+      type: Object,
+      required: true
     },
     // price: {
-    //   type: Object,
-    //   required: true
+    //   M: {
+    //     type: Number
+    //   },
+    //   L: {
+    //     type: Number
+    //   },
+    //   XL: {
+    //     type: Number
+    //   },
+    //   price: {
+    //     type: Number
+    //   }
     // },
-    price: {
-      M: {
-        type: String
-      },
-      L: {
-        type: String
-      },
-      XL: {
-        type: String
-      },
-      price: {
-        type: String
-      }
-    },
     currency: {
       type: String
     },
