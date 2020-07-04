@@ -1,69 +1,33 @@
 const Product = require("../productSchema");
-//const getToken = require("../../../helpers/getToken");
 
 const Joi = require("joi");
 
-const categories = ["pizza", "drinks", "sides", "desserts"];
-const subcategories = ["classic", "premium", "branded", ""];
-
-const validation = Joi.object().keys({
-  sku: Joi.number(),
-  name: Joi.object({
-    ru: Joi.string()
-      .min(3)
+const validation = Joi.alternatives().try(
+  {
+    M: Joi.number()
+      .min(2)
       .required(),
-    en: Joi.string()
-      .min(3)
+    L: Joi.number()
+      .min(2)
       .required(),
-    ukr: Joi.string()
-      .min(3)
+    XL: Joi.number()
+      .min(2)
       .required()
-  }).required(),
-  description: Joi.number(),
-  //price: Joi.object().required(),
-  price: Joi.alternatives().try(
-    {
-      M: Joi.number()
-        .min(2)
-        .required(),
-      L: Joi.number()
-        .min(2)
-        .required(),
-      XL: Joi.number()
-        .min(2)
-        .required()
-    },
-    {
-      price: Joi.number()
-        .min(2)
-        .required()
-    }
-  ),
-  currency: Joi.string(),
-  categories: Joi.string()
-    .valid(...categories)
-    .required(),
-  subcategory: Joi.string().valid(...subcategories),
-  likes: Joi.number(),
-  images: Joi.string().required(),
-  ingredients: Joi.array()
-});
+  },
+  {
+    price: Joi.number()
+      .min(2)
+      .required()
+  }
+);
 
 const createProduct = async (request, response) => {
   try {
-    // const token = getToken(request);
-    // if (!token) {
-    //   return response.status(403).send({
-    //     status: "failed",
-    //     message: "No token provided"
-    //   });
-    // }
-
-    // const product = Joi.validate(request.body, validation);
-    // if (product.error) {
-    //   return response.status(400).json(product.error.details[0].message);
-    // }
-
+    const price = request.body.price;
+    const validPrice = Joi.validate(price, validation);
+    if (validPrice.error) {
+      return response.status(400).json(validPrice.error.message);
+    }
     const product = request.body;
 
     const newProduct = new Product(product);
