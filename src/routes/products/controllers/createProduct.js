@@ -59,12 +59,12 @@ const createProduct = async (request, response) => {
     //   });
     // }
 
-    const product = Joi.validate(request.body, validation);
-    if (product.error) {
-      return response.status(400).json(product.error.details[0].message);
-    }
+    // const product = Joi.validate(request.body, validation);
+    // if (product.error) {
+    //   return response.status(400).json(product.error.details[0].message);
+    // }
 
-    // const product = request.body;
+    const product = request.body;
 
     const newProduct = new Product(product);
     const productToSave = await newProduct.save();
