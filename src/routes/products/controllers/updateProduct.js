@@ -10,31 +10,39 @@ const validation = Joi.object().keys({
   name: Joi.object({
     ru: Joi.string()
       .min(3)
+      .max(30)
       .required(),
     en: Joi.string()
       .min(3)
+      .max(30)
       .required(),
     ukr: Joi.string()
       .min(3)
+      .max(30)
       .required()
   }).required(),
-  description: Joi.number(),
-  //price: Joi.object().required(),
+  description: Joi.number()
+    .min(0.3)
+    .max(999),
   price: Joi.alternatives().try(
     {
       M: Joi.number()
         .min(10)
+        .max(999)
         .required(),
       L: Joi.number()
         .min(10)
+        .max(999)
         .required(),
       XL: Joi.number()
         .min(10)
+        .max(999)
         .required()
     },
     {
       price: Joi.number()
         .min(10)
+        .max(999)
         .required()
     }
   ),
