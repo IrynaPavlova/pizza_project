@@ -5,18 +5,18 @@ const Joi = require("joi");
 const validation = Joi.alternatives().try(
   {
     M: Joi.number()
-      .min(2)
+      .min(10)
       .required(),
     L: Joi.number()
-      .min(2)
+      .min(10)
       .required(),
     XL: Joi.number()
-      .min(2)
+      .min(10)
       .required()
   },
   {
     price: Joi.number()
-      .min(2)
+      .min(10)
       .required()
   }
 );
