@@ -231,7 +231,7 @@ async function compressImage(req, res, next) {
     const lenna = await Jimp.read(filePath);
     await lenna
       .resize(1200, Jimp.AUTO) // resize
-      .quality(60) // set JPEG quality
+      .quality(50) // set JPEG quality
       .write(compressedFilePath); // save
 
     req.file = {
