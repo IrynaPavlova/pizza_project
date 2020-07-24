@@ -32,6 +32,13 @@ const userSchema = new Schema(
     },
     role: {
       type: String
+    },
+    verificationToken: {
+      type: String
+    },
+    status: {
+      type: String,
+      default: "NOT_VERIFIED"
     }
   },
   {

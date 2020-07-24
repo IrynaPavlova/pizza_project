@@ -1,11 +1,15 @@
 const User = require("../../users/userSchema");
 const bcrypt = require("bcrypt");
 const generateToken = require("../../../helpers/generateToken");
+const config = require("../../../../config");
+const sgMail = require("@sendgrid/mail");
+const shortid = require("shortid");
 
 const authRegister = async (request, response) => {
   try {
     const user = request.body;
     const email = user.email;
+    const name = user.username;
     const emailMatch = await User.findOne({ email });
 
     if (emailMatch) {
@@ -19,14 +23,33 @@ const authRegister = async (request, response) => {
       });
     }
 
+    //const verificationToken = shortid();
+
     const hashedPassword = bcrypt.hashSync(user.password, 10);
-    const userData = { ...user, password: hashedPassword };
+    const userData = {
+      ...user,
+      //verificationToken: verificationToken,
+      password: hashedPassword
+    };
 
     const newUser = new User(userData);
     const userToSave = await newUser.save();
     const id = userToSave._id;
     const payload = { id };
     const token = generateToken(payload);
+
+    //const verificationLink = `${config.baseUrl}/auth/verify/${verificationToken}`;
+    // const verificationLink = `http://localhost:3000/auth/verify/${verificationToken}`;
+
+    // sgMail.setApiKey(config.sendgrid);
+
+    // const msg = {
+    //   to: email,
+    //   from: "pavlovairafed@gmail.com",
+    //   subject: "Please confirm your email",
+    //   html: `Hello, ${name}! To confirm your email address: ${email} click the <a href="${verificationLink}">link</a>`
+    // };
+    // await sgMail.send(msg);
 
     response.status(201).json({
       status: "success",

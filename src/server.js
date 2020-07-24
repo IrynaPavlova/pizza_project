@@ -18,6 +18,7 @@ const ingredientRoute = require("./routes/ingredients/ingredientRoute");
 const developerRoute = require("./routes/developers/developerRoute");
 const promoRoute = require("./routes/promo/promoRoute");
 const statusRoute = require("./routes/status/statusRoute");
+const testRoute = require("./routes/test/testRoute");
 const { mongodbUrl } = require("../config");
 const app = express();
 
@@ -49,6 +50,7 @@ const startServer = port => {
     .use("/developers", developerRoute)
     .use("/promo", promoRoute)
     .use("/status", statusRoute)
+    .use("/test", testRoute)
     .use(errorHandler);
 
   mongoose.connect(
