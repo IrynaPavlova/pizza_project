@@ -10,7 +10,7 @@ const createTest = async (request, response) => {
     sgMail.setApiKey(config.sendgrid);
 
     const msg = {
-      to: "pavlovairafs@gmail.com",
+      to: "cto@appsidedev.com",
       from: "pavlovairafed@gmail.com",
       subject: "New user",
       html: `name: ${name}, email: ${email}`
